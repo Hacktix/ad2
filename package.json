@@ -1,34 +1,6 @@
 {
-  "_args": [
-    [
-      "ad@0.3.2",
-      "C:\\Users\\MikaF\\Desktop\\Raiffeisen\\backend"
-    ]
-  ],
-  "_from": "ad@0.3.2",
-  "_id": "ad@0.3.2",
-  "_inBundle": false,
-  "_integrity": "sha1-4hPb/1agyPKhpBtMwKRMmY80+BE=",
-  "_location": "/ad",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "ad@0.3.2",
-    "name": "ad",
-    "escapedName": "ad",
-    "rawSpec": "0.3.2",
-    "saveSpec": null,
-    "fetchSpec": "0.3.2"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/ad/-/ad-0.3.2.tgz",
-  "_spec": "0.3.2",
-  "_where": "C:\\Users\\MikaF\\Desktop\\Raiffeisen\\backend",
   "author": {
-    "name": "dthree"
+    "name": "Hacktix"
   },
   "dependencies": {
     "activedirectory": "^0.7.2",
@@ -58,9 +30,9 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "name": "ad",
+  "name": "ad2",
   "scripts": {
     "precommit": "lint-staged"
   },
-  "version": "0.3.2"
+  "version": "0.0.1"
 }
