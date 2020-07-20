@@ -1,12 +1,8 @@
-# AD
+# AD2
 
 > Making Active Directory jQuery-easy.
 
 ---
-
-[![Build Passing](https://img.shields.io/badge/build-passing-brightgreen.svg)](https://img.shields.io/badge/build-passing-brightgreen.svg)
-[![Build Coverage 100%](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://img.shields.io/badge/build-100%25-brightgreen.svg)
-
 
 AD is a Javascript implementation of common Active Directory tasks, built to be simple as possible.
 
@@ -129,6 +125,11 @@ ad.ou().add(options)
 ad.ou(ouName).get()
 ad.ou(ouName).exists()
 ad.ou(ouName).remove()
+
+ad.object().get(filter)
+ad.object().add(options)
+ad.object(objectName).get()
+ad.object(objectName, options).get()
 
 ad.other().get(filter)
 ad.all().get(filter)
@@ -490,6 +491,33 @@ Deletes an Organizational Unit. As a note, if it has any children, this will not
 await ad.ou('Sales').remove();
 // => {success: true}
 
+```
+
+### Object methods
+
+#### ad.object().get(filter)
+
+Returns all objects that are not users or groups.
+
+```js
+await ad.other().get();
+// => [{ ... }, { ... }];
+
+```
+
+#### ad.object().add(options)
+
+Creates a new object in Active Directory. Returns the created object.
+
+```js
+await ad.object().add({
+	name: "My Phone",
+	location: "Devices",
+	object: {
+		objectClass: "device"
+	}
+})
+// => { cn: "My Phone", objectClass: "device" }
 ```
 
 

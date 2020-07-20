@@ -6,6 +6,7 @@ const imports = {
   group: require('./src/group'),
   ou: require('./src/ou'),
   others: require('./src/others'),
+  object: require('./src/object'),
   helpers: require('./src/internal/helpers'),
   operations: require('./src/internal/operations'),
   chainable: require('./src/chainable')
@@ -40,7 +41,10 @@ class AD {
     config.domain = String(config.user).split('@')[1];
 
     if (config.baseDN === undefined) {
-      config.baseDN = config.domain.split('.').map(n => `DC=${n}`).join(',');
+      config.baseDN = config.domain
+        .split('.')
+        .map(n => `DC=${n}`)
+        .join(',');
     }
 
     config = Object.assign(configFile, config);

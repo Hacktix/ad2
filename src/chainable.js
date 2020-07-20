@@ -19,7 +19,7 @@
  *  ad.user(userName).unlock();
  *  ad.user(userName).remove();
  *  ad.user(userName).location();
- *  
+ *
  *  ad.group().get(opts);
  *  ad.group().add();
  *  ad.group(groupName).get(opts);
@@ -27,13 +27,13 @@
  *  ad.group(groupName).addUser(userName);
  *  ad.group(groupName).removeUser(userName);
  *  ad.group(groupName).remove();
- *  
+ *
  *  ad.ou().get(opts);
  *  ad.ou().add(opts);
  *  ad.ou(ouName).get();
  *  ad.ou(ouName).exists();
  *  ad.ou(ouName).remove();
- *  
+ *
  *  ad.other().get(opts);
  *  ad.all().get(opts);
  *  ad.find(searchString);
@@ -178,5 +178,23 @@ module.exports = {
 
   find(searchString, opts) {
     return this._search(searchString, opts);
+  },
+
+  object(objectName, objectLocation = null) {
+    if (objectName === undefined) {
+      return {
+        get: filter => {
+          return this.getAllObjects(filter);
+        },
+        add: opts => {
+          return this.addObject(opts);
+        }
+      };
+    }
+    return {
+      get: () => {
+        return this.findObject(objectName, { location: objectLocation });
+      }
+    };
   }
 };
