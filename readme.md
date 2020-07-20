@@ -538,6 +538,24 @@ await ad.object("My Object", "SomeOU").get()
 // => { cn:"My Object", description: "Something something..." ... }
 ```
 
+#### ad.object(objectName).remove()
+
+Removes an object from the Active Directory. (**Warning:** Uses first match across all OUs when no location is given)
+
+```js
+await ad.object("My Object").remove()
+// => { success: true }
+```
+
+#### ad.object(objectName, location).remove()
+
+Removes an object from the Active Directory at the given location.
+
+```js
+await ad.object("My Object", "SomeOU").remove()
+// => { success: true }
+```
+
 
 ### Other methods
 

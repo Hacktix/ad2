@@ -50,5 +50,28 @@ module.exports = {
         return resolve(results.other[0]);
       });
     });
+  },
+
+  async removeObject(objectName, opts) {
+    return new Promise(async (resolve, reject) => {
+      this.findObject(objectName, opts)
+        .then(object => {
+          if (
+            object === undefined ||
+            object === null ||
+            Object.keys(object).length < 1
+          ) {
+            return reject({
+              error: true,
+              message: `Object ${object} does not exist.`
+            });
+          }
+          return this._deleteObjectByDN(object.dn);
+        })
+        .then(resp => {
+          return resolve(resp);
+        })
+        .catch(reject);
+    });
   }
 };

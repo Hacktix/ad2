@@ -194,6 +194,9 @@ module.exports = {
     return {
       get: () => {
         return this.findObject(objectName, { location: objectLocation });
+      },
+      remove: () => {
+        return this.removeObject(objectName, { location: objectLocation });
       }
     };
   }
