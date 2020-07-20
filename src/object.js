@@ -44,7 +44,7 @@ module.exports = {
           return reject(err);
         }
         if (!results || !results.other || results.other.length < 1) {
-          return resolve({});
+          return resolve();
         }
         results.other = api.processResults(opts, results.other);
         return resolve(results.other[0]);

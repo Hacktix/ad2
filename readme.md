@@ -520,6 +520,24 @@ await ad.object().add({
 // => { cn: "My Phone", objectClass: "device" }
 ```
 
+#### ad.object(objectName).get()
+
+Returns an object that is not a user or a group with the given name. If no object is matched, returns `undefined`.
+
+```js
+await ad.object("My Object").get()
+// => { cn: "My Object", description: "Something something..." ... }
+```
+
+#### ad.object(objectName, location).get()
+
+Returns an object that is not a user or a group with the given name at the given location. If no object is matched, returns `undefined`.
+
+```js
+await ad.object("My Object", "SomeOU").get()
+// => { cn:"My Object", description: "Something something..." ... }
+```
+
 
 ### Other methods
 
