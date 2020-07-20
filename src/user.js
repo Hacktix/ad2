@@ -292,11 +292,8 @@ module.exports = {
     const domain = this.config.domain;
     let fullUser = `${userName}@${domain}`;
     return new Promise(async (resolve, reject) => {
-      console.log('AUTH USER', fullUser, pass);
       this.ad.authenticate(fullUser, pass, (error, authorized) => {
-        let code;
         let out = authorized;
-        console.log('BACK FROM AUTH', error, authorized);
         if (error && error.lde_message) {
           out.detail = error.lde_message;
           out.message = String(error.stack).split(':')[0];
