@@ -1,5 +1,6 @@
 const parseLocation = require('./util/parseLocation');
 const api = require('./util/api');
+const { addUserToGroup } = require('./group');
 
 /**
  *  Public functions on object
@@ -63,7 +64,7 @@ module.exports = {
           ) {
             return reject({
               error: true,
-              message: `Object ${object} does not exist.`
+              message: `Object ${objectName} does not exist.`
             });
           }
           return this._deleteObjectByDN(object.dn);
@@ -72,6 +73,32 @@ module.exports = {
           return resolve(resp);
         })
         .catch(reject);
+    });
+  },
+
+  async addToGroup(objectName, groupName, opts) {
+    return new Promise(async (resolve, reject) => {
+      this.findObject(objectName, opts).then(object => {
+        if (
+          object === undefined ||
+          object == null ||
+          Object.keys(object).length < 1
+        ) {
+          return reject({
+            error: true,
+            message: `Object ${objectName} does not exist.`
+          });
+        }
+        this._groupAddOperation(groupName, {
+          member: [object.dn]
+        })
+          .then(resp => {
+            resolve(resp);
+          })
+          .catch(err => {
+            reject(Object.assign(err, { error: true }));
+          });
+      });
     });
   }
 };

@@ -195,8 +195,19 @@ module.exports = {
       get: () => {
         return this.findObject(objectName, { location: objectLocation });
       },
+      exists: () => {
+        return (
+          this.findObject(objectName, { location: objectLocation }) ===
+          undefined
+        );
+      },
       remove: () => {
         return this.removeObject(objectName, { location: objectLocation });
+      },
+      addToGroup: groupName => {
+        return this.addToGroup(objectName, groupName, {
+          location: objectLocation
+        });
       }
     };
   }
