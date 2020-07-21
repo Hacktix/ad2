@@ -4,16 +4,16 @@
   },
   "dependencies": {
     "activedirectory": "^0.7.2",
-    "ldapjs": "^1.0.1",
+    "ldapjs": "^2.0.0",
     "lodash.orderby": "^4.6.0",
     "node-ssha256": "^0.1.1"
   },
   "description": "Active Directory API for Node",
   "devDependencies": {
-    "husky": "^0.14.3",
-    "jest": "^20.0.4",
-    "lint-staged": "^4.0.2",
-    "prettier": "^1.5.3"
+    "husky": "^4.2.5",
+    "jest": "^26.1.0",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5"
   },
   "keywords": [
     "active",
@@ -34,5 +34,5 @@
   "scripts": {
     "precommit": "lint-staged"
   },
-  "version": "0.0.2"
+  "version": "0.0.3"
 }
