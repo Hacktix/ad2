@@ -128,10 +128,10 @@ ad.ou(ouName).remove()
 
 ad.object().get(filter)
 ad.object().add(options)
-ad.object(objectName).get()
-ad.object(objectName, options).get()
-ad.object(objectName).remove()
-ad.object(objectName, options).remove()
+ad.object(objectName [, options]).exists()
+ad.object(objectName [, options]).get()
+ad.object(objectName [, options]).remove()
+ad.object(objectName [, options]).addToGroup(groupName)
 
 ad.other().get(filter)
 ad.all().get(filter)
@@ -555,6 +555,24 @@ Removes an object from the Active Directory at the given location.
 
 ```js
 await ad.object("My Object", "SomeOU").remove()
+// => { success: true }
+```
+
+#### ad.object(objectName).addToGroup(groupName)
+
+Adds an object to a group in Active Directory.
+
+```js
+await ad.object("My Object").addToGroup("testGroup")
+// => { success: true }
+```
+
+#### ad.object(objectName, location).addToGroup(groupName)
+
+Adds an object at the given location to a group in Active Directory.
+
+```js
+await ad.object("My Object").addToGroup("testGroup")
 // => { success: true }
 ```
 
