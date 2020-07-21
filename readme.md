@@ -130,6 +130,8 @@ ad.object().get(filter)
 ad.object().add(options)
 ad.object(objectName).get()
 ad.object(objectName, options).get()
+ad.object(objectName).remove()
+ad.object(objectName, options).remove()
 
 ad.other().get(filter)
 ad.all().get(filter)
