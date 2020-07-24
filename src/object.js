@@ -100,5 +100,29 @@ module.exports = {
           });
       });
     });
+  },
+
+  async setAttributes(objectName, opts, attributes) {
+    return new Promise(async (resolve, reject) => {
+      this.findObject(objectName, opts).then(object => {
+        if (
+          object === undefined ||
+          object == null ||
+          Object.keys(object).length < 1
+        ) {
+          return reject({
+            error: true,
+            message: `Object ${objectName} does not exist.`
+          });
+        }
+        this._attributeUpdateOperation(objectName, opts, attributes)
+          .then(resp => {
+            resolve(resp);
+          })
+          .catch(err => {
+            reject(Object.assign(err, { error: true }));
+          });
+      })
+    })
   }
 };

@@ -208,6 +208,9 @@ module.exports = {
         return this.addToGroup(objectName, groupName, {
           location: objectLocation
         });
+      },
+      setProperties: properties => {
+        return this.setAttributes(objectName, { location: objectLocation }, properties);
       }
     };
   }

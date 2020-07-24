@@ -72,6 +72,23 @@ module.exports = {
     });
   },
 
+  async _operationByObject(objectName, opts, operation) {
+    return new Promise(async (resolve, reject) => {
+      this.findObject(objectName, opts)
+        .then(async object => {
+          if (!object || Object.keys(object).length < 1) {
+            /* istanbul ignore next */
+            return reject({ message: `Object ${object} does not exist.` });
+          }
+          return this._operation(object.dn, operation);
+        })
+        .then(data => {
+          resolve(data);
+        })
+        .catch(reject);
+    });
+  },
+
   async _groupAddOperation(groupName, modification) {
     return this._operationByGroup(groupName, {
       operation: 'add',
@@ -91,5 +108,12 @@ module.exports = {
       operation: 'replace',
       modification
     });
+  },
+
+  async _attributeUpdateOperation(objectName, opts, modification) {
+    return this._operationByObject(objectName, opts, {
+      operation: 'replace',
+      modification
+    })
   }
 };
