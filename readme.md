@@ -4,7 +4,7 @@
 
 ---
 
-AD is a Javascript implementation of common Active Directory tasks, built to be simple as possible.
+AD2 is an extension of the original AD package and a Javascript implementation of common Active Directory tasks, built to be simple as possible.
 
 Really simple.
 
@@ -128,10 +128,11 @@ ad.ou(ouName).remove()
 
 ad.object().get(filter)
 ad.object().add(options)
-ad.object(objectName [, options]).exists()
-ad.object(objectName [, options]).get()
-ad.object(objectName [, options]).remove()
-ad.object(objectName [, options]).addToGroup(groupName)
+ad.object(objectName[, location]).exists()
+ad.object(objectName[, location]).get()
+ad.object(objectName[, location]).remove()
+ad.object(objectName[, location]).addToGroup(groupName)
+ad.object(objectName[, location]).setProperties(properties)
 
 ad.other().get(filter)
 ad.all().get(filter)
@@ -572,7 +573,30 @@ await ad.object("My Object").addToGroup("testGroup")
 Adds an object at the given location to a group in Active Directory.
 
 ```js
-await ad.object("My Object").addToGroup("testGroup")
+await ad.object("My Object", "SomeOU").addToGroup("testGroup")
+// => { success: true }
+```
+
+#### ad.object(objectName).setProperties(properties)
+
+Updates already existing properties of the given object in Active Directory.
+
+```js
+await ad.object("My Object").setProperties({
+	customProperty: "someValue"
+})
+// => { success: true }
+```
+
+
+#### ad.object(objectName, location).setProperties(properties)
+
+Updates already existing properties of the given object at the given location in Active Directory.
+
+```js
+await ad.object("My Object", "SomeOU").setProperties({
+	customProperty: "someValue"
+})
 // => { success: true }
 ```
 
