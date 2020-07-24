@@ -346,6 +346,12 @@ module.exports = {
     return this._userReplaceOperation(userName, obj);
   },
 
+  async setUserAccountControl(userName, uac) {
+    return this._userReplaceOperation(userName, {
+      userAccountControl: uac
+    });
+  },
+
   async setUserPasswordNeverExpires(userName) {
     const NEVER_EXPIRES = 66048;
     return this._userReplaceOperation(userName, {

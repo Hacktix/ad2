@@ -83,6 +83,9 @@ module.exports = {
       passwordExpires: () => {
         return this.enableUser(userName);
       },
+      uac: uac => {
+        return this.setUserAccountControl(userName, uac);
+      },
       enable: () => {
         return this.enableUser(userName);
       },
