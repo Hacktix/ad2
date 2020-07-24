@@ -34,7 +34,8 @@ module.exports = {
       let params = {
         filter,
         includeMembership: ['all'],
-        includeDeleted: false
+        includeDeleted: false,
+        attributes: '*'
       };
       if (location) {
         location = parseLocation(location);
